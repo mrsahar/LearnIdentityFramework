@@ -4,6 +4,7 @@ using LearnIdentityFramework.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearnIdentityFramework.Migrations
 {
     [DbContext(typeof(IdentityDb))]
-    partial class IdentityDbModelSnapshot : ModelSnapshot
+    [Migration("20250704183053_addfandLName")]
+    partial class addfandLName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,11 +43,6 @@ namespace LearnIdentityFramework.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(225)
-                        .HasColumnType("nvarchar(225)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -83,6 +81,11 @@ namespace LearnIdentityFramework.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("firstName")
+                        .IsRequired()
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
 
                     b.HasKey("Id");
 
